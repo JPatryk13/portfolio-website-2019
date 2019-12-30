@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ project.title }}</h1>
+  <br>
+  {% if project.phase == 'p' %}<p>Phase: Planning</p>
+  {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
+  {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
+  {% else %}<p>Phase: Completion</p>
+  {% endif %}
+  <p>Added at: {{ project.added_at }}</p>
+  <p>Last updated: {{ project.updated_at }}</p>
+  <br>
+  <p>{{ project.description }}</p>
+{% endblock %}

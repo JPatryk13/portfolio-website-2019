@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block title %} | Projects{% endblock %}
+
+{% block content %}
+  <h1>Projects</h1>
+  {% if project_list %}
+    <ul>
+      {% for project in project_list %}
+        <li>
+          <a href="{{ project.get_absolute_url }}">{{ project.title }}</a>
+          {% if project.phase == 'p' %}<p>Phase: Planning</p>
+          {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
+          {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
+          {% else %}<p>Phase: Completion</p>
+          {% endif %}
+          <p>{{ project.prev_description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There is no projects added to the list.</p>
+  {% endif %}
+{% endblock %}
