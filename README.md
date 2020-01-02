@@ -1,2 +1,2 @@
-# online_portfolio
+# portfolio
 Online portfolio website created in Django.
