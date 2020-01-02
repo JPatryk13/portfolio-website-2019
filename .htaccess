@@ -1,0 +1,6 @@
+AddHandler cgi-script .fcgi
+RewriteEngine on
+RewriteBase /
+# The following two lines are for FastCGI:
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ cgi-bin/application.fcgi/$1 [QSA,L]
