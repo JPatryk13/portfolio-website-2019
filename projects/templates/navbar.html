@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+
+{% block navbar %}
+  <!-- navigation bar for mobile devices -->
+  <div class="mobile-nav">
+    <div class="icons li-icon">
+      <a><i class="fab fa-linkedin fa-2x"></i></a>
+    </div>
+    <div class="icons menu-icon">
+      <span onclick="openNav()"><i class="fa fa-bars fa-2x"></i></span>
+    </div>
+    <div class="icons share-icon">
+      <a><i class="fas fa-share-alt-square fa-2x"></i></a>
+    </div>
+  </div>
+
+  <!-- navigation bar for screens -->
+  <div class="menu">
+    <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'projects' %}">Projects</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- overlay navigation (unfolds from the mobile-nav) -->
+  <div id="myNav" class="overlay">
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+      <i class="fas fa-times"></i>
+    </a>
+    <!-- Overlay content -->
+    <div class="overlay-content">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'projects' %}">Projects</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div> <!-- .overlay-content -->
+  </div> <!-- #myNav -->
+{% endblock %}
+
+{% block nav_scripts %}
+  <script type="text/javascript">
+    /* Open */
+    function openNav() {
+      document.getElementById("myNav").style.height = "100%";
+    }
+
+    /* Close */
+    function closeNav() {
+      document.getElementById("myNav").style.height = "0%";
+    }
+  </script>
+{% endblock %}

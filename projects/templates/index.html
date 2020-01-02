@@ -1,6 +1,15 @@
 {% extends "base_generic.html" %}
 
+{% block title %} | Home{% endblock %}
+
 {% block content %}
-<h1>Patryk Jesionka</h1>
-<p>Twoja stara to krokodyl. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/container_home.css' %}">
+
+  <h1>Patryk Jesionka</h1>
+  <p>Let's make the night brighter.</p>
+  <div class="media-icons">
+    <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    <a href="#"><i class="fas fa-share-alt-square fa-2x"></i></a>
+  </div>
 {% endblock %}
