@@ -2,23 +2,89 @@
 
 {% block title %} | Projects{% endblock %}
 
+{% block cont-style-screen %} cont-screen mt-5 pt-5{% endblock %}
+
 {% block content %}
-  <h1>Projects</h1>
   {% if project_list %}
-    <ul>
-      {% for project in project_list %}
-        <li>
-          <a href="{{ project.get_absolute_url }}">{{ project.title }}</a>
-          {% if project.phase == 'p' %}<p>Phase: Planning</p>
-          {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
-          {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
-          {% else %}<p>Phase: Completion</p>
-          {% endif %}
-          <p>{{ project.prev_description }}</p>
-        </li>
-      {% endfor %}
-    </ul>
+    {% for project in project_list %}
+      {% load static %}
+      <div class="col-12 my-3">
+        <div class="card bg-dark text-white">
+          <img class="card-img" src="{% static project.get_md_img_path %}" alt="Card image">
+          <div class="card-img-overlay">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.prev_description }}</p>
+            <a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
   {% else %}
-    <p>There is no projects added to the list.</p>
+    <div class="col-12">
+      <p>I'm working on it!</p>
+    </div>
   {% endif %}
+  <!--
+  {% if project.phase == 'p' %}<p>Phase: Planning</p>
+  {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
+  {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
+  {% else %}<p>Phase: Completion</p>
+  {% endif %}
+  -->
+{% endblock %}
+
+{% block content-mobile %}
+  <div class="container container-vert-center cont-mobile mt-5 pt-5">
+    <div class="row w-100">
+      {% if project_list %}
+        {% for project in project_list %}
+          {% load static %}
+          <div class="col-12 my-3" align="center">
+            <div class="card bg-dark">
+              <img class="card-img-top" src="{% static project.get_sm_img_path %}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.prev_description }}</p>
+                <a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <p>I'm working on it!</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts_nav %}
+<script type="text/javascript">
+	/* Make navbar dark when scrolled down */
+	// When the user scrolls the page, execute myFunction
+	window.onscroll = function() {myFunction()};
+
+	// Get the navbar
+	var navbar = document.getElementById("Navbar");
+
+	// Add transition style to the navbar
+	navbar.classList.add("t-03");
+
+	// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+	function myFunction() {
+		if (window.pageYOffset > 0) {
+			navbar.classList.remove("bg-alpha");
+			navbar.classList.add("bg-dark");
+		} else {
+			navbar.classList.remove("bg-dark");
+			navbar.classList.add("bg-alpha");
+		}
+	}
+
+	// Turn on scrolling
+    var body = document.getElementsByTagName("body");
+    body[0].style.overflowY = "scroll";
+
+</script>
 {% endblock %}

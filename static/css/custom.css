@@ -1,0 +1,169 @@
+/* Define color palette */
+:root {
+	--white: #e5e5e5;
+	--bright-grey: #cccccc;
+	--dark-grey: #333333;
+	--black: #161616;
+}
+
+/* Define base properties */
+html, body {
+	background: url("/static/img/hero_image.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	background-attachment: fixed;
+	
+	font-family: 'Courier Prime', monospace;
+	color: var(--white);
+	
+	overflow: hidden;
+}
+
+h1, h2 {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+/* Centering stuff is pain in the ass; put it next to the .container class */
+.container-vert-center {
+	min-height: 100%;  /* Fallback for browsers which do NOT support vh unit */
+	min-height: 100vh;
+
+	display: flex;
+	align-items: center;
+	
+	padding-bottom: 15vh;
+}
+
+/* Customise bootstrap a little */
+.bg-dark {
+	background-color: var(--dark-grey) !important;
+}
+
+.bg-alpha {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.btn-primary {
+	background-color: rgba(0, 0, 0, 0) !important;
+	border-color: var(--white) !important;
+}
+
+.btn-primary:hover {
+	background-color: var(--bright-grey) !important;
+	border-color: var(--dark-grey) !important;
+	color: var(--dark-grey) !important;
+}
+
+.active {
+	color: var(--bright-grey) !important;
+}
+
+.text-light:hover {
+	color: var(--bright-grey) !important;
+	cursor: pointer !important;
+}
+
+.border {
+	border-width: 2px !important;
+}
+
+.border-white {
+	border-color: var(--white) !important!;
+}
+
+.t-03 {
+    -webkit-transition: 2s; /* Safari prior 6.1 */
+    transition: 2s;
+}
+
+/* Properties for mobile navbar */
+.mobile-nav {
+	display: none;
+	width: 100vw;
+	text-align: center;
+	background: var(--dark-grey);
+	box-sizing: border-box;
+}
+
+/* The Overlay (background) */
+.overlay {
+	/* Height & width depends on how you want to reveal the overlay (see JS below) */
+	height: 0;
+	width: 100%;
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	background-color: var(--dark-grey); /* Black w/opacity */
+	overflow: hidden; /* Disable horizontal scroll */
+	transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+	position: relative;
+	top: 25%; /* 25% from the top */
+	height: 100%; /* 100% width */
+	text-align: center; /* Centered text/links */
+	margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+	padding: 8px;
+	text-decoration: none;
+	font-size: 36px;
+	color: var(--white);
+	display: block; /* Display block instead of inline */
+	transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+	color: white;
+}
+
+/* Properties for projects_list - again, we've got separate <div>'s for mobiles and screens */
+.cont-screen {
+	display: flex;
+}
+
+.cont-mobile {
+	display: none;
+}
+/* ... */
+
+.cont-screen .cont-mobile {
+	margin-top: 10vh;
+}
+
+@media screen and (max-width: 768px) {
+	/* Properties for navigation bar and footer - swap visibility */
+	.mobile-nav {
+		display: block;
+	}
+	
+	.navbar {
+		display: none;
+	}
+	
+	footer {
+		display: none;
+	}
+	
+	/* Mobile nav and overlay require some more styles */
+	.overlay a {font-size: 20px}
+	.overlay .closebtn {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
+	
+	/* Properties for projects_list - swap visibility */
+	.cont-screen {
+		display: none;
+	}
+
+	.cont-mobile {
+		display: flex;
+	}
+}

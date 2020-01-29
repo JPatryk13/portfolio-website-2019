@@ -3,16 +3,13 @@
 {% block title %} | About Me{% endblock %}
 
 {% block content %}
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/container_about.css' %}">
-
-  <div class="text">
-    <h1>About Me</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-      voluptate velit.
-    </p>
+  <div class="col-sm-12">
+    <div>
+      <h1>About Me</h1>
+      <p class="margin-top-s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim neque sapien, id mollis arcu bibendum a. Morbi id quam sed mauris interdum ullamcorper non non magna. Quisque consectetur finibus blandit. Duis et velit sed est tristique pulvinar. Mauris accumsan porta ex eu laoreet. Sed gravida, ante sit amet porta commodo, lorem elit ornare lacus, vel gravida lectus dui at odio. Donec tincidunt mauris in enim bibendum, id gravida risus vulputate. Nullam sit amet suscipit mauris. Quisque molestie scelerisque magna non pulvinar. Cras non lorem vehicula, suscipit enim ut, posuere metus. In sagittis eu justo nec convallis. Nulla fringilla vel odio nec sagittis. Donec gravida felis quis tincidunt varius.</p>
+      <p class="margin-top-s">Nam finibus risus lectus, eget sodales risus aliquam eu. In neque mi, tempus ut turpis ac, condimentum efficitur lacus. Nam in commodo mauris. Aliquam porta ex nec sapien convallis, a lacinia mi molestie. Donec sagittis semper ipsum ac vehicula. Vivamus bibendum tellus nec varius cursus.</p>
+    </div>
   </div>
 {% endblock %}
+
+{% block footer-fixed-bottom %} fixed-bottom{% endblock %}

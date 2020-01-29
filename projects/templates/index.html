@@ -3,13 +3,12 @@
 {% block title %} | Home{% endblock %}
 
 {% block content %}
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/container_home.css' %}">
-
-  <h1>Patryk Jesionka</h1>
-  <p>Let's make the night brighter.</p>
-  <div class="media-icons">
-    <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-    <a href="#"><i class="fas fa-share-alt-square fa-2x"></i></a>
+  <div class="col-sm-12">
+    <div>
+      <h1>Patryk Jesionka</h1>
+      <p class="margin-top-s">Website Developer and Software Engineer. Don't hesitate to make your ideas become real.</p>
+    </div>
   </div>
 {% endblock %}
+
+{% block footer-fixed-bottom %} fixed-bottom{% endblock %}

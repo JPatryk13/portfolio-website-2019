@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-    crossorigin="anonymous">
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-    <link
-    href="https://fonts.googleapis.com/css?family=Courier+Prime|Titillium+Web&display=swap"
-    rel="stylesheet">
-    <script
-    src="https://kit.fontawesome.com/589f640727.js"
-    crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Courier+Prime|Titillium+Web&display=swap" rel="stylesheet">
+    <!-- Stylesheet overriding the default Bootstrap styles -->
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
     <title>Patryk Jesionka{% block title %}{% endblock %}</title>
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/body.css' %}">
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/overlay.css' %}">
   </head>
 
-  <body>
-    <div class="wrapper">
+  <body class="text-center">
 
-      <header>
-        <nav>
-          {% block navbar %}{% include 'navbar.html' %}{% endblock %}
-        </nav>
-      </header>
+    <!-- <div id="Preloader" class="preloader"></div> -->
 
-      <div class="container">
+    {% block navbar %}{% include 'navbar.html' %}{% endblock %}
+    <!-- Container (for screens) -->
+      <div class="container container-vert-center d-flex justify-content-center{% block cont-style-screen %}{% endblock %}">
+      <div class="row w-100">
         {% block content %}{% endblock %}
       </div>
-
     </div>
-    {% block nav_scripts %}{% endblock %}
+    <!-- Container (for screens) -->
+
+    <!-- Container for mobile devices (optional) -->
+    {% block content-mobile %}{% endblock %}
+    <!-- Container for mobile devices (optional) -->
+
+    <!-- Footer -->
+	<footer class="page-footer font-small bg-alpha{% block footer-fixed-bottom %}{% endblock %}">
+      {% block footer %}{% include 'footer.html' %}{% endblock %}
+    </footer>
+    <!-- Footer -->
+
+    {% block scripts %}{% include 'scripts.html' %}{% endblock %}
+
+    <!-- Additional scripts (for navbar - project list and detail pages) -->
+    {% block scripts_nav %}{% endblock %}
+
   </body>
 </html>
