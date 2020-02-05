@@ -2,89 +2,47 @@
 
 {% block title %} | Projects{% endblock %}
 
-{% block cont-style-screen %} cont-screen mt-5 pt-5{% endblock %}
-
 {% block content %}
-  {% if project_list %}
-    {% for project in project_list %}
-      {% load static %}
-      <div class="col-12 my-3">
-        <div class="card bg-dark text-white">
-          <img class="card-img" src="{% static project.get_md_img_path %}" alt="Card image">
-          <div class="card-img-overlay">
-            <h5 class="card-title">{{ project.title }}</h5>
-            <p class="card-text">{{ project.prev_description }}</p>
-            <a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
-          </div>
-        </div>
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="col-12">
-      <p>I'm working on it!</p>
-    </div>
-  {% endif %}
-  <!--
-  {% if project.phase == 'p' %}<p>Phase: Planning</p>
-  {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
-  {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
-  {% else %}<p>Phase: Completion</p>
-  {% endif %}
-  -->
-{% endblock %}
 
-{% block content-mobile %}
-  <div class="container container-vert-center cont-mobile mt-5 pt-5">
-    <div class="row w-100">
-      {% if project_list %}
-        {% for project in project_list %}
-          {% load static %}
-          <div class="col-12 my-3" align="center">
-            <div class="card bg-dark">
-              <img class="card-img-top" src="{% static project.get_sm_img_path %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">{{ project.title }}</h5>
-                <p class="card-text">{{ project.prev_description }}</p>
-                <a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      {% else %}
-        <div class="col-12">
-          <p>I'm working on it!</p>
-        </div>
-      {% endif %}
-    </div>
-  </div>
-{% endblock %}
+<!-- Container for screens -->
+<div class="container container-vert-center cont-screen">
+	{% if project_list %}
+		<div class="row w-100 ">
+			{% for project in project_list %}
+				{% load static %}
+				<div class="col-12 my-3">
+					<div class="card bg-dark text-white">
+						<img class="card-img" src="{% static project.get_md_img_path %}" alt="Card image">
+						<div class="card-img-overlay">
+							<h5 class="card-title">{{ project.title }}</h5>
+							<p class="card-text">{{ project.prev_description }}</p>
+							<a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<div class="row w-100">
+			<p>I'm working on it!</p>
+		</div>
+	{% endif %}
+</div>
+<!-- Container for screens -->
 
-{% block scripts_nav %}
+<!-- Script for adding/removing .pt-5 and .mt-5 classes -->
 <script type="text/javascript">
-	/* Make navbar dark when scrolled down */
-	// When the user scrolls the page, execute myFunction
-	window.onscroll = function() {myFunction()};
+	var noOfColumns = document.getElementsByClassName("col-12 my-3").length;
+	var row = document.getElementsByClassName("row w-100");
 
-	// Get the navbar
-	var navbar = document.getElementById("Navbar");
-
-	// Add transition style to the navbar
-	navbar.classList.add("t-03");
-
-	// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-	function myFunction() {
-		if (window.pageYOffset > 0) {
-			navbar.classList.remove("bg-alpha");
-			navbar.classList.add("bg-dark");
-		} else {
-			navbar.classList.remove("bg-dark");
-			navbar.classList.add("bg-alpha");
-		}
+	if (noOfColumns > 2) {
+		row[0].classList.add("pt-5");
+		row[0].classList.add("mt-5");
 	}
 
-	// Turn on scrolling
-    var body = document.getElementsByTagName("body");
-    body[0].style.overflowY = "scroll";
-
+	var body = document.getElementsByTagName("body");
+	body[0].classList.add("scroll-on");
 </script>
+<!-- Script for adding/removing .pt-5 and .mt-5 classes -->
+
 {% endblock %}

@@ -1,0 +1,9 @@
+.scroll-on {
+    overflow-y: scroll; /* General */
+    overflow: -moz-scrollbars-none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer +10 */
+
+    max-height: 95vh !important;
+}
+
+.scroll-on::-webkit-scrollbar { width: 0 !important } /* Chrome, Safari, newer versions of Opera */

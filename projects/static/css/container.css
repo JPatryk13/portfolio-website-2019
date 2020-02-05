@@ -1,0 +1,37 @@
+/* Centering stuff is pain in the ass; put it next to the .container class */
+.container-vert-center {
+	min-height: 100%;  /* Fallback for browsers which do NOT support vh unit */
+	min-height: 100vh;
+
+	display: flex;
+	align-items: center;
+}
+
+/* Properties for projects_list - again, we've got separate <div>'s for mobiles and screens */
+.cont-screen {
+	display: flex;
+}
+
+.cont-mobile {
+	display: none;
+}
+
+.cont-screen .cont-mobile {
+	margin-top: 10vh;
+}
+
+::-webkit-scrollbar {
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
+}
+
+@media screen and (max-width: 768px) {
+	/* Properties for projects_list - swap visibility */
+	.cont-screen {
+		display: none !important;
+	}
+
+	.cont-mobile {
+		display: flex !important;
+	}
+}

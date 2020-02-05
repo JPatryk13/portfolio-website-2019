@@ -23,7 +23,7 @@ class ProjectListViewTest(TestCase):
     def test_view_uses_correct_template(self):
         response = self.client.get(reverse('projects'))
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'projects/project_list.html')
+        self.assertTemplateUsed(response, 'projects/project_list_old.html')
 
 
 class ProjectDetailViewTest(TestCase):

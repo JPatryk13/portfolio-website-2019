@@ -1,44 +1,23 @@
 {% extends "base_generic.html" %}
 
 {% block scripts %}
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS + Fontawesome -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/589f640727.js" crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
-        /* Open */
-        function openNav() {
-            document.getElementById("myNav").style.height = "100%";
-        }
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS + Fontawesome -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/589f640727.js" crossorigin="anonymous"></script>
+<!-- Custom scripts -->
+{% load static %}
+<script type="{% static 'js/overlay.js' %}"></script>
+<script type="{% static 'js/preloader.js' %}"></script>
+<script type="{% static 'js/sticky_navbar.js' %}"></script>
 
-        /* Close */
-        function closeNav() {
-            document.getElementById("myNav").style.height = "0%";
-        }
-
-        $(window).resize(function() {
-            const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            if (vw > 768) {
-                closeNav();
-            }
-        });
-
-        /*
-        // Makes preloader disappear after the content is loaded (no it doeasne)
-        var preloader = document.getElementById("Preloader");
-
-        $(window).on('load', function() {
-            preloader.parentNode.removeChild(preloader);
-        });
-        */
-    </script>
 {% endblock %}

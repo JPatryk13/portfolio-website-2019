@@ -34,6 +34,7 @@ def contact(request):
 
 class ProjectListView(generic.ListView):
     model = Project
+    paginate_by = 10
 
 
 class ProjectDetailView(generic.DetailView):
