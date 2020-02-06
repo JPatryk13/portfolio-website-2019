@@ -1,0 +1,27 @@
+/* Define color palette */
+:root {
+	--white: #e5e5e5;
+	--bright-grey: #cccccc;
+	--dark-grey: #333333;
+	--black: #161616;
+}
+
+/* Properties for mobile navbar */
+.mobile-nav {
+	display: none;
+	width: 100vw;
+	text-align: center;
+	background: var(--dark-grey);
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+	/* Properties for navigation bar - swap visibility */
+	.mobile-nav {
+		display: block;
+	}
+
+	.navbar {
+		display: none;
+	}
+}

@@ -10,9 +10,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Courier+Prime|Titillium+Web&display=swap" rel="stylesheet">
-    <!-- Stylesheet overriding the default Bootstrap styles -->
+
+    <!-- Custom styles -->
 	{% load static %}
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/container.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overlay.css' %}">
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scroll.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page/project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/page/contact.css' %}">
 
     <title>Patryk Jesionka{% block title %}{% endblock %}</title>
 
@@ -22,29 +30,86 @@
 
     <!-- <div id="Preloader" class="preloader"></div> -->
 
-    {% block navbar %}{% include 'navbar.html' %}{% endblock %}
-    <!-- Container (for screens) -->
-      <div class="container container-vert-center d-flex justify-content-center{% block cont-style-screen %}{% endblock %}">
-      <div class="row w-100">
-        {% block content %}{% endblock %}
+    <!-- Navbar for screens -->
+    <nav id="Navbar" class="navbar navbar-expand-md py-3 justify-content-center fixed-top" style="background-color: rgba(51, 51, 51, 0) !important; transition: 1s; -webkit-transition: 1s;">
+      <div class="navbar-nav">
+        <a class="mx-4 nav-item nav-link active" href="{% url 'index' %}">Home <span
+                class="sr-only">(current)</span></a>
+        <a class="mx-4 nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>
+        <a class="mx-4 nav-item nav-link text-light" href="{% url 'about' %}">About</a>
+        <a class="mx-4 nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>
+      </div> <!-- .navbar-nav -->
+    </nav>
+    <!-- Navbar for screens -->
+
+    <!-- Navbar for mobile devices -->
+    <div class="container-fluid mobile-nav py-3 fixed-top">
+      <div class="row">
+        <div class="col">
+          <a class="nav-item nav-link text-light" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+        <div class="col">
+          <span class="nav-item nav-link text-light" onclick="openNav()"><i class="fa fa-bars fa-2x"></i></span>
+        </div>
+        <div class="col">
+          <a class="nav-item nav-link text-light" href="#"><i class="fas fa-share-alt-square fa-2x"></i></a>
+        </div>
       </div>
     </div>
-    <!-- Container (for screens) -->
+    <!-- Navbar for mobile devices -->
 
-    <!-- Container for mobile devices (optional) -->
-    {% block content-mobile %}{% endblock %}
-    <!-- Container for mobile devices (optional) -->
+    <!-- overlay navigation (unfolds from the mobile-nav) -->
+    <div id="myNav" class="overlay">
+      <!-- Button to close the overlay navigation -->
+      <div class="container-fluid mobile-nav py-3">
+        <div class="row">
+          <div class="col">
+            <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">
+              <i class="fas fa-times"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay content -->
+      <div class="overlay-content">
+        <a class="nav-item nav-link active" href="{% url 'index' %}">Home</a>
+        <a class="nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>
+        <a class="nav-item nav-link text-light" href="{% url 'about' %}">About</a>
+        <a class="nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>
+      </div> <!-- .overlay-content -->
+    </div> <!-- #myNav -->
+
+    <!-- Container -->
+    {% block content %}{% endblock %}
+    <!-- Container -->
 
     <!-- Footer -->
 	<footer class="page-footer font-small bg-alpha{% block footer-fixed-bottom %}{% endblock %}">
-      {% block footer %}{% include 'footer.html' %}{% endblock %}
+      <div class="py-3 flex-center">
+        <a class="px-2 text-light" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a class="px-2 text-light" href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+      </div>
     </footer>
     <!-- Footer -->
 
-    {% block scripts %}{% include 'scripts.html' %}{% endblock %}
-
-    <!-- Additional scripts (for navbar - project list and detail pages) -->
-    {% block scripts_nav %}{% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS + Fontawesome -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/589f640727.js" crossorigin="anonymous"></script>
+    <!-- Custom scripts -->
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/overlay.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/sticky_navbar.js' %}"></script>
 
   </body>
 </html>

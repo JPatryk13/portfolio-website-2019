@@ -1,0 +1,16 @@
+/* Define color palette */
+:root {
+	--white: #e5e5e5;
+	--bright-grey: #cccccc;
+	--dark-grey: #333333;
+	--black: #161616;
+}
+
+/* Customise bootstrap a little */
+.border {
+	border-width: 2px !important;
+}
+
+.border-white {
+	border-color: var(--white) !important!;
+}
