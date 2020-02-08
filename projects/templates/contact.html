@@ -13,13 +13,14 @@
         <p>I'm always happy to help!</p>
       </div>
       <form>
+        {% csrf_token %}
         <div class="form-group">
-          <label for="Email">Email address</label>
-          <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+          <label for="id_email">Email address</label>s
+          <input type="email" class="form-control" id="id_email" aria-describedby="emailHelp" placeholder="Enter email" required>
         </div>
         <div class="form-group">
-          <label for="Message">Message</label>
-          <textarea class="form-control" id="Message" rows="3"></textarea>
+          <label for="id_message">Message</label>
+          <textarea class="form-control" id="id_message" rows="3" placeholder="Enter message" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send</button>
       </form>

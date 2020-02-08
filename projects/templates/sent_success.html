@@ -1,7 +1,22 @@
 {% extends "base_generic.html" %}
 
+{% block title %} | Contact Me{% endblock %}
+
 {% block content %}
-<h2>Success!</h2>
-<p>Thank you for contacting me :)</p>
-<a href="{% url 'index' %}">Home</a>
+
+<div class="container container-vert-center d-flex justify-content-center">
+  <div class="row w-100">
+    <div class="col-3"></div>
+    <div class="col-6 p-4 border border-white rounded">
+      <div style="text-align:center">
+        <h1>Hurrah!</h1>
+        <p>The message will be soon delivered.</p>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+
 {% endblock %}
+
+{% block footer-fixed-bottom %} fixed-bottom{% endblock %}
