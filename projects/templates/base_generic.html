@@ -30,68 +30,19 @@
 
     <!-- <div id="Preloader" class="preloader"></div> -->
 
-    <!-- Navbar for screens -->
-    <nav id="Navbar" class="navbar navbar-expand-md py-3 justify-content-center fixed-top" style="background-color: rgba(51, 51, 51, 0) !important; transition: 1s; -webkit-transition: 1s;">
-      <div class="navbar-nav">
-        <a class="mx-4 nav-item nav-link active" href="{% url 'index' %}">Home <span
-                class="sr-only">(current)</span></a>
-        <a class="mx-4 nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>
-        <a class="mx-4 nav-item nav-link text-light" href="{% url 'about' %}">About</a>
-        <a class="mx-4 nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>
-      </div> <!-- .navbar-nav -->
-    </nav>
-    <!-- Navbar for screens -->
-
-    <!-- Navbar for mobile devices -->
-    <div class="container-fluid mobile-nav py-3 fixed-top">
-      <div class="row">
-        <div class="col">
-          <a class="nav-item nav-link text-light" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-        </div>
-        <div class="col">
-          <span class="nav-item nav-link text-light" onclick="openNav()"><i class="fa fa-bars fa-2x"></i></span>
-        </div>
-        <div class="col">
-          <a class="nav-item nav-link text-light" href="#"><i class="fas fa-share-alt-square fa-2x"></i></a>
-        </div>
-      </div>
-    </div>
-    <!-- Navbar for mobile devices -->
-
-    <!-- overlay navigation (unfolds from the mobile-nav) -->
-    <div id="myNav" class="overlay">
-      <!-- Button to close the overlay navigation -->
-      <div class="container-fluid mobile-nav py-3">
-        <div class="row">
-          <div class="col">
-            <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">
-              <i class="fas fa-times"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Overlay content -->
-      <div class="overlay-content">
-        <a class="nav-item nav-link active" href="{% url 'index' %}">Home</a>
-        <a class="nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>
-        <a class="nav-item nav-link text-light" href="{% url 'about' %}">About</a>
-        <a class="nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>
-      </div> <!-- .overlay-content -->
-    </div> <!-- #myNav -->
+    {% block navbar %}{% include "partials/navbar.html" %}{% endblock %}
 
     <!-- Container -->
     {% block content %}{% endblock %}
     <!-- Container -->
 
+    {% block footer %}
     <!-- Footer -->
 	<footer class="page-footer font-small bg-alpha{% block footer-fixed-bottom %}{% endblock %}">
-      <div class="py-3 flex-center">
-        <a class="px-2 text-light" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-        <a class="px-2 text-light" href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
-      </div>
+      {% include "partials/footer.html" %}
     </footer>
     <!-- Footer -->
+    {% endblock %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS + Fontawesome -->
