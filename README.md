@@ -267,5 +267,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Contact page console output set-up
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'testing@example.com'  # default: 'webmaster@localhost'
+EMAIL_HOST_USER = ''    # default: ''
+EMAIL_HOST_PASSWORD = ''    # default: ''
+EMAIL_USE_TLS = False   # default: False
+EMAIL_PORT = 1025   # default: 25
 ```
