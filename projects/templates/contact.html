@@ -12,15 +12,19 @@
         <h1>Contact Me</h1>
         <p>I'm always happy to help!</p>
       </div>
-      <form>
+      <form role="form" method="post">
         {% csrf_token %}
         <div class="form-group">
-          <label for="id_email">Email address</label>s
-          <input type="email" class="form-control" id="id_email" aria-describedby="emailHelp" placeholder="Enter email" required>
+          <label>Name</label>
+          {{ form.name }}
         </div>
         <div class="form-group">
-          <label for="id_message">Message</label>
-          <textarea class="form-control" id="id_message" rows="3" placeholder="Enter message" required></textarea>
+          <label>Email address</label>
+          {{ form.email }}
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          {{ form.message }}
         </div>
         <button type="submit" class="btn btn-primary">Send</button>
       </form>
