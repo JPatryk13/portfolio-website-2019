@@ -1,15 +1,44 @@
 {% extends "base_generic.html" %}
 
+{% block title %}| {{ project.title }}{% endblock %}
+
 {% block content %}
-  <h1>{{ project.title }}</h1>
-  <br>
-  {% if project.phase == 'p' %}<p>Phase: Planning</p>
-  {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
-  {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
-  {% else %}<p>Phase: Completion</p>
-  {% endif %}
-  <p>Added at: {{ project.added_at }}</p>
-  <p>Last updated: {{ project.updated_at }}</p>
-  <br>
-  <p>{{ project.description }}</p>
+
+{% load static %}
+<!-- Changing background image -->
+<style>
+  html, body {
+    background: url({% static project.get_lg_img_path %}) no-repeat 50% 50%;
+    background-size: cover;
+	background-attachment: fixed;
+  }
+</style>
+<!-- Changing background image -->
+
+<div class="container container-vert-center cont-screen">
+  <div class="row w-100 pt-5 mt-5">
+    <div class="col-12 my-3" style="text-align: justify;">
+      <h1>{{ project.title }}</h1>
+      <br>
+      {% if project.phase == 'p' %}<p>Phase: Planning</p>
+      {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
+      {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
+      {% else %}<p>Phase: Completion</p>
+      {% endif %}
+      <p>Added at: {{ project.added_at }}</p>
+      <br>
+      <p>{{ project.description }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Script for turning scrolling on -->
+<script type="text/javascript">
+
+    var body = document.getElementsByTagName("body");
+	body[0].classList.add("scroll-on");
+
+</script>
+<!-- Script for turning scrolling on -->
+
 {% endblock %}
