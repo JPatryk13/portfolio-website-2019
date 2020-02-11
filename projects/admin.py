@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Project, Tag, Message
+from .models import Project, Tag, Message, Image
 
 
 admin.site.register(Project)
 admin.site.register(Tag)
 admin.site.register(Message)
+admin.site.register(Image)
 

@@ -14,9 +14,9 @@ class Project(models.Model):
         help_text='Max: 200 chars.'
     )
     description = models.TextField(
-        max_length=10000,
+        max_length=100000,
         verbose_name='Description.',
-        help_text='Max: 10000 chars.'
+        help_text='Max: 100000 chars. Use HTML to make it look good.'
     )
 
     tag = models.ManyToManyField('Tag')
@@ -47,6 +47,8 @@ class Project(models.Model):
                                verbose_name="Medium image (thumbnail for screens)")
     lg_img = models.ImageField(upload_to=path_to_img, editable=True, help_text="1680x1050px", null=True,
                                verbose_name="Large image (background for the project detail page)")
+
+    img = models.ManyToManyField('Image')
 
     # Side note for editing each of the images (GIMP).
     #   Apply desaturation;
@@ -94,3 +96,16 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag
+
+
+class Image(models.Model):
+    path_to_img = 'projects/static/img/projects/'
+
+    image = models.ImageField(upload_to=path_to_img, editable=True, help_text='Path: ' + path_to_img, null=True)
+    description = models.CharField(max_length=1000, verbose_name='Image description')
+
+    def __str__(self):
+        return  self.image.name
+
+    def get_img_path(self):
+        return self.image.name.replace('projects/static/', '')
