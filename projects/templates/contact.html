@@ -12,6 +12,17 @@
         <h1>Contact Me</h1>
         <p>I'm always happy to help!</p>
       </div>
+      {{ form.non_field_errors }}
+      {{ form.name.errors }}
+      {{ form.email.errors }}
+      {{ form.message.errors }}
+
+      {% if alert %}
+        <div class="alert alert-dark" role="alert">
+          {{ alert }}
+        </div>
+      {% endif %}
+
       <form role="form" method="post">
         {% csrf_token %}
         <div class="form-group">

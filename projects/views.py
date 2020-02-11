@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views import generic
-from django.template.loader import get_template
-from django.core.mail import EmailMessage
+from .validator import check_email
+from django.http import HttpResponseRedirect, Http404
 
-from .models import Project
+from .models import Project, Message
 from .forms import ContactForm
+
+from django.shortcuts import render_to_response
 
 
 def index(request):
@@ -19,8 +21,10 @@ def contact(request):
     # Get contact form (name, email, message)
     form_class = ContactForm
 
-    if request.method == 'POST':    # If the submit button was pressed...
-        form = form_class(data=request.POST)    # ...extract the data from the request into 'form'
+    # If the submit button was pressed, proceed
+    # Else return blank form
+    if request.method == 'POST':
+        form = form_class(data=request.POST)  # ...extract the data from the request into 'form'
 
         #
         #                         HttpRequest.POST
@@ -31,42 +35,44 @@ def contact(request):
         # The get() method returns the value for the specified key if key is
         #                          in dictionary.
         #
-        # email = EmailMessage(
-        #     subject=      'Hello',
-        #     body=         'Body goes here',
-        #     from_email=   'from@example.com',
-        #     to=           ['to1@example.com', 'to2@example.com'],
-        #     bcc=          ['bcc@example.com'],
-        #     reply_to=     ['another@example.com'],
-        #     headers=      {'Message-ID': 'foo'},
-        # )
-        #
-        if form.is_valid() and valid_email:     # If the content of the form (extracted data) is valid...
-            name = request.POST.get('name', '')     # ...extract the name
-            email = request.POST.get('email', '')    # ...extract the email
-            message = request.POST.get('message', '')   # ...extract the message
 
-            # Email the profile with the contact information
-            template = get_template('contact_template.txt')     # Grab template for message output
-            context = {
-                'name': name,
-                'email': email,
-                'message': message,
-            }   # Organise user input into context dictionary
-            content = template.render(context)  # Feed context into contact_template
+        # If the content of the form (extracted data) is valid (input meets form requirements) proceed
+        # Else render blank form
+        if form.is_valid():
+            name = request.POST.get('name', '')  # ...extract the name
+            email = request.POST.get('email', '')  # ...extract the email
+            message = request.POST.get('message', '')  # ...extract the message
 
-            email_message = EmailMessage(
-                subject='New message.',
-                body=content,
-                from_email=email,
-                to=['robermaselko@gmail.com'],
-                headers={'Reply-To': email}
-            )   # Build a message
-            email_message.send()    # And send it
-            return redirect('contact')  # Get the user back to the contact page
+            # Verify if the name variable contains only letters - if not, return alert
+            if not name.isalpha():
+                return render(request, 'contact.html', {'form': form_class, 'alert': 'I guess it is not your real name'})
+
+            # If a message in the database with this email already exists, return alert
+            # Else proceed
+            if Message.objects.filter(email=email).exists():
+                return render(request, 'contact.html', {'form': form_class, 'alert': 'You have messaged me already.'})
+            else:
+                # If the email is valid, save the message to the database
+                # Else return alert
+                if check_email(email):
+                    email_message = Message(name=name, email=email,
+                                            message=message)  # Add gathered data to the model instance
+                    email_message.save()  # Save it to database
+
+                    request.session['pp_contact'] = True
+                    return HttpResponseRedirect(reverse('contact-success'))  # Get the user to the contact-success page
+                else:
+                    return render(request, 'contact.html', {'form': form_class, 'alert': 'Address email is invalid or cannot be verified.'})
 
     # Return (render) contact page with form_class as form (context)
     return render(request, 'contact.html', {'form': form_class})
+
+
+def contact_success(request):
+    if 'pp_contact' in request.session:
+        del request.session['pp_contact']
+        return render(request, 'contact_success.html')
+    raise Http404
 
 
 class ProjectListView(generic.ListView):
@@ -75,3 +81,27 @@ class ProjectListView(generic.ListView):
 
 class ProjectDetailView(generic.DetailView):
     model = Project
+
+
+def handler404(request, exception, template_name="errors/404.html"):
+    response = render_to_response(template_name)
+    response.status_code = 404
+    return response
+
+
+def handler500(request, template_name="errors/500.html"):
+    response = render_to_response(template_name)
+    response.status_code = 500
+    return response
+
+
+def handler403(request, exception, template_name="errors/403.html"):
+    response = render_to_response(template_name)
+    response.status_code = 403
+    return response
+
+
+def handler400(request, exception, template_name="errors/400.html"):
+    response = render_to_response(template_name)
+    response.status_code = 400
+    return response

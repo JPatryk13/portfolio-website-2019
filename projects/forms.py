@@ -2,14 +2,13 @@ from django import forms
 
 
 class ContactForm(forms.Form):
-    required_css_class = "form-control"
-
     name = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'John'
-        })
+        }),
+        max_length=100
     )
     email = forms.EmailField(
         required=True,

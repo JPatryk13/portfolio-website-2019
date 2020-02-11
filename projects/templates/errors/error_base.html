@@ -14,35 +14,17 @@
     <!-- Custom styles -->
 	{% load static %}
     <link rel="stylesheet" href="{% static 'css/general.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/container.css' %}">
-    <link rel="stylesheet" href="{% static 'css/overlay.css' %}">
-    <link rel="stylesheet" href="{% static 'css/button.css' %}">
-    <link rel="stylesheet" href="{% static 'css/scroll.css' %}">
-    <link rel="stylesheet" href="{% static 'css/project.css' %}">
-    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 
-    <title>Patryk Jesionka{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 
   </head>
 
   <body class="text-center">
 
-    <!-- <div id="Preloader" class="preloader"></div> -->
-
-    {% block navbar %}{% include "partials/navbar.html" %}{% endblock %}
-
     <!-- Container -->
-    {% block content %}{% endblock %}
+    {% block error %}{% endblock %}
     <!-- Container -->
-
-    {% block footer %}
-    <!-- Footer -->
-	<footer class="page-footer font-small bg-alpha{% block footer-fixed-bottom %}{% endblock %}">
-      {% include "partials/footer.html" %}
-    </footer>
-    <!-- Footer -->
-    {% endblock %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS + Fontawesome -->
@@ -56,11 +38,6 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/589f640727.js" crossorigin="anonymous"></script>
-    <!-- Custom scripts -->
-    {% load static %}
-    <script type="text/javascript" src="{% static 'js/overlay.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/sticky_navbar.js' %}"></script>
 
   </body>
 </html>

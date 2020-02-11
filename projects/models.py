@@ -3,12 +3,24 @@ from django.urls import reverse
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=100, verbose_name='Project title.', help_text='Max: 100 chars.')
-    prev_description = models.TextField(max_length=200,
-                                        verbose_name='Short description.',
-                                        help_text='Max: 200 chars.')
-    description = models.TextField(max_length=10000, verbose_name='Description.', help_text='Max: 10000 chars.')
-    
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Project title.',
+        help_text='Max: 100 chars.'
+    )
+    prev_description = models.TextField(
+        max_length=200,
+        verbose_name='Short description.',
+        help_text='Max: 200 chars.'
+    )
+    description = models.TextField(
+        max_length=10000,
+        verbose_name='Description.',
+        help_text='Max: 10000 chars.'
+    )
+
+    tag = models.ManyToManyField('Tag')
+
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -61,3 +73,24 @@ class Project(models.Model):
 
     def get_lg_img_path(self):
         return self.lg_img.name.replace('projects/static/', '')
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Name')
+    email = models.EmailField(unique=True)
+    message = models.TextField(max_length=500, verbose_name='Message')
+
+    added_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.email
+
+
+class Tag(models.Model):
+    tag = models.CharField(max_length=100, verbose_name='Project tag')
+
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.tag
