@@ -27,7 +27,7 @@
       {% endif %}
       <p>Added at: {{ project.added_at }}</p>
       <br>
-      <p>{{ project.description }}</p>
+      <p>{{ project.description|safe }}</p>
     </div>
   </div>
 </div>

@@ -1,11 +1,11 @@
 /* Open */
 function openNav() {
-    document.getElementById("myNav").style.height = "100%";
+    document.getElementById("Overlay").style.height = "100%";
 }
 
 /* Close */
 function closeNav() {
-    document.getElementById("myNav").style.height = "0%";
+    document.getElementById("Overlay").style.height = "0%";
 }
 
 $(window).resize(function() {
