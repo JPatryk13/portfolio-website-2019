@@ -32,6 +32,34 @@
 </div>
 <!-- Container for screens -->
 
+<!-- Container for mobile devices -->
+<div class="container container-vert-center cont-mobile mt-5 pt-5">
+	{% if project_list %}
+		<div class="row w-100">
+			{% for project in project_list %}
+				{% load static %}
+				<div class="col-12 my-3" align="center">
+					<div class="card bg-dark" style="width: 100%;">
+						<img class="card-img-top" src="{% static project.get_sm_img_path %}" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">{{ project.title }}</h5>
+							<p class="card-text">{{ project.prev_description }}</p>
+							<a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<div class="row w-100">
+			<div class="col-12 my-3">
+				<p>I'm working on it!</p>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<!-- Container for mobile devices -->
+
 <!-- Script for adding/removing .pt-5 and .mt-5 classes -->
 <script type="text/javascript">
 	var noOfColumns = document.getElementsByClassName("col-12 my-3").length;

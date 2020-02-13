@@ -4,9 +4,11 @@
 
 {% block content %}
 
-<div class="container container-vert-center d-flex justify-content-center">
+<!-- Container for screens -->
+<div class="container container-vert-center d-flex justify-content-center cont-screen">
   <div class="row w-100">
     <div class="col-3"></div>
+
     <div class="col-6 p-4 border border-white rounded">
       <div style="text-align:center">
         <h1>Contact Me</h1>
@@ -40,9 +42,51 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </form>
     </div>
+
     <div class="col-3"></div>
   </div>
 </div>
+<!-- Container for screens -->
+
+<!-- Container for mobile devices -->
+<div class="container container-vert-center d-flex justify-content-center cont-mobile">
+  <div class="row w-100">
+    <div class="col-12 p-4 border border-white rounded">
+      <div style="text-align:center">
+        <h1>Contact Me</h1>
+        <p>I'm always happy to help!</p>
+      </div>
+      {{ form.non_field_errors }}
+      {{ form.name.errors }}
+      {{ form.email.errors }}
+      {{ form.message.errors }}
+
+      {% if alert %}
+        <div class="alert alert-dark" role="alert">
+          {{ alert }}
+        </div>
+      {% endif %}
+
+      <form role="form" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Name</label>
+          {{ form.name }}
+        </div>
+        <div class="form-group">
+          <label>Email address</label>
+          {{ form.email }}
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          {{ form.message }}
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Container for mobile devices -->
 
 {% endblock %}
 
