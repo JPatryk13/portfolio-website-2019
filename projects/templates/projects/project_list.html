@@ -2,6 +2,13 @@
 
 {% block title %} | Projects{% endblock %}
 
+{% block projects-active-screen %}
+<a class="mx-4 nav-item nav-link active" href="{% url 'projects' %}">
+    Projects
+    <span class="sr-only">(current)</span>
+</a>
+{% endblock %}
+
 {% block content %}
 
 <!-- Container for screens -->

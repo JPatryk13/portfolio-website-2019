@@ -2,6 +2,13 @@
 
 {% block title %} | Contact Me{% endblock %}
 
+{% block home-active-screen %}
+<a class="mx-4 nav-item nav-link active" href="{% url 'contact' %}">
+    Contact
+    <span class="sr-only">(current)</span>
+</a>
+{% endblock %}
+
 {% block content %}
 
 <!-- Container for screens -->

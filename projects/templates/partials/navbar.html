@@ -2,11 +2,10 @@
 <nav id="Navbar" class="navbar navbar-expand-md py-3 justify-content-center fixed-top"
      style="background-color: rgba(51, 51, 51, 0) !important; transition: 1s; -webkit-transition: 1s;">
     <div class="navbar-nav">
-        <a class="mx-4 nav-item nav-link active" href="{% url 'index' %}">Home <span
-                class="sr-only">(current)</span></a>
-        <a class="mx-4 nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>
-        <a class="mx-4 nav-item nav-link text-light" href="{% url 'about' %}">About</a>
-        <a class="mx-4 nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>
+        {% block home-active-screen %}<a class="mx-4 nav-item nav-link text-light" href="{% url 'index' %}">Home</a>{% endblock %}
+        {% block projects-active-screen %}<a class="mx-4 nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>{% endblock %}
+        {% block about-active-screen %}<a class="mx-4 nav-item nav-link text-light" href="{% url 'about' %}">About</a>{% endblock %}
+        {% block contact-active-screen %}<a class="mx-4 nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>{% endblock %}
     </div> <!-- .navbar-nav -->
 </nav>
 <!-- Navbar for screens -->
@@ -15,13 +14,13 @@
 <div id="MobileNav" class="container-fluid mobile-nav py-3 fixed-top">
     <div class="row">
         <div class="col">
-            <a class="nav-item nav-link text-light" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a class="nav-item nav-link text-light" href="https://uk.linkedin.com/in/patryk-jesionka-354569177"><i class="fab fa-linkedin fa-2x"></i></a>
         </div>
         <div class="col">
             <span class="nav-item nav-link text-light" onclick="openNav()"><i class="fa fa-bars fa-2x"></i></span>
         </div>
         <div class="col">
-            <a class="nav-item nav-link text-light" href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+            <a class="nav-item nav-link text-light" href="https://www.facebook.com/p.jesionka"><i class="fab fa-facebook-square fa-2x"></i></a>
         </div>
     </div>
 </div>
@@ -42,7 +41,7 @@
 
     <!-- Overlay content -->
     <div class="overlay-content">
-        <a class="nav-item nav-link active" href="{% url 'index' %}">Home</a>
+        <a class="nav-item nav-link text-light" href="{% url 'index' %}">Home</a>
         <a class="nav-item nav-link text-light" href="{% url 'projects' %}">Projects</a>
         <a class="nav-item nav-link text-light" href="{% url 'about' %}">About</a>
         <a class="nav-item nav-link text-light" href="{% url 'contact' %}">Contact</a>

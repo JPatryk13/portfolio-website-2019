@@ -33,6 +33,7 @@ h1, h2 {
 
 .active {
 	color: var(--bright-grey) !important;
+	text-decoration: underline !important;
 }
 
 .text-light:hover {
