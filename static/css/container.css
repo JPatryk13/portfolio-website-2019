@@ -7,7 +7,16 @@
 	align-items: center;
 }
 
-/* Properties for projects_list - again, we've got separate <div>'s for mobiles and screens */
+::-webkit-scrollbar {
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
+}
+
+/* Properties for projects_list and contact - again, we've got separate <div>'s for mobiles and screens */
+.cont-screen .cont-mobile {
+	margin-top: 10vh;
+}
+
 .cont-screen {
 	display: flex;
 }
@@ -16,17 +25,8 @@
 	display: none;
 }
 
-.cont-screen .cont-mobile {
-	margin-top: 10vh;
-}
-
-::-webkit-scrollbar {
-    width: 0px; /* remove scrollbar space */
-    background: transparent; /* optional: just make scrollbar invisible */
-}
-
 @media screen and (max-width: 768px) {
-	/* Properties for projects_list - swap visibility */
+	/* Properties for projects_list contact - swap visibility */
 	.cont-screen {
 		display: none !important;
 	}
