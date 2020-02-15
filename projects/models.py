@@ -50,6 +50,8 @@ class Project(models.Model):
 
     img = models.ManyToManyField('Image')
 
+    public = models.BooleanField(default=False)
+
     # Side note for editing each of the images (GIMP).
     #   Apply desaturation;
     #   Apply CIE ich Noise filter (dulling set from 4 to 6 depending on the image)
