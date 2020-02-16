@@ -58,6 +58,20 @@
   </div>
 </div>
 
+<!-- Script for adding .pt-5, .mt-5 and .scroll-on classes -->
+<script type="text/javascript">
+	var row = document.getElementsByClassName("row w-100");
+	var body = document.getElementsByTagName("body");
+    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+    if (vw < 768) {
+        row[0].classList.add("pt-5");
+		row[0].classList.add("mt-5");
+	    body[0].classList.add("scroll-on");
+    }
+</script>
+<!-- Script for adding .pt-5, .mt-5 and .scroll-on classes -->
+
 {% endblock %}
 
 {% block footer-fixed-bottom %} fixed-bottom{% endblock %}
