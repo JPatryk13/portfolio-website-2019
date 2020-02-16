@@ -50,7 +50,19 @@ class Project(models.Model):
 
     img = models.ManyToManyField('Image')
 
-    public = models.BooleanField(default=False)
+    STATUS = (
+        ('t', 'Test'),
+        ('e', 'Edit'),
+        ('p', 'public'),
+    )
+
+    status = models.CharField(
+        max_length=1,
+        choices=STATUS,
+        blank=True,
+        default='e',
+        help_text='Status of the post.'
+    )
 
     # Side note for editing each of the images (GIMP).
     #   Apply desaturation;
