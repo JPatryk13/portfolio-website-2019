@@ -21,7 +21,7 @@ class ContactForm(forms.Form):
         required=True,
         widget=forms.Textarea(attrs={
             'class': 'form-control',
-            'placeholder': 'Hellow World!'
+            'placeholder': 'Hello World!'
         }),
         max_length=500
     )
