@@ -16,17 +16,19 @@
 	{% if project_list %}
 		<div class="row w-100 ">
 			{% for project in project_list %}
-				{% load static %}
-				<div class="col-12 my-3">
-					<div class="card bg-dark text-white">
-						<img class="card-img" src="{% static project.get_md_img_path %}" alt="Card image">
-						<div class="card-img-overlay">
-							<h5 class="card-title">{{ project.title }}</h5>
-							<p class="card-text">{{ project.prev_description }}</p>
-							<a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+				{% if project.status == 'p' %}
+					{% load static %}
+					<div class="col-12 my-3">
+						<div class="card bg-dark text-white">
+							<img class="card-img" src="{% static project.get_md_img_path %}" alt="Card image">
+							<div class="card-img-overlay">
+								<h5 class="card-title">{{ project.title }}</h5>
+								<p class="card-text">{{ project.prev_description }}</p>
+								<a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endif %}
 			{% endfor %}
 		</div>
 	{% else %}
@@ -44,17 +46,19 @@
 	{% if project_list %}
 		<div class="row w-100">
 			{% for project in project_list %}
-				{% load static %}
-				<div class="col-12 my-3" align="center">
-					<div class="card bg-dark" style="width: 100%;">
-						<img class="card-img-top" src="{% static project.get_sm_img_path %}" alt="Card image cap">
-						<div class="card-body">
-							<h5 class="card-title">{{ project.title }}</h5>
-							<p class="card-text">{{ project.prev_description }}</p>
-							<a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+				{% if project.status == 'p' %}
+					{% load static %}
+					<div class="col-12 my-3" align="center">
+						<div class="card bg-dark" style="width: 100%;">
+							<img class="card-img-top" src="{% static project.get_sm_img_path %}" alt="Card image cap">
+							<div class="card-body">
+								<h5 class="card-title">{{ project.title }}</h5>
+								<p class="card-text">{{ project.prev_description }}</p>
+								<a href="{{ project.get_absolute_url }}" class="btn btn-primary">Read more</a>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endif %}
 			{% endfor %}
 		</div>
 	{% else %}

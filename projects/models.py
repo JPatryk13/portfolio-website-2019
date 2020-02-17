@@ -19,7 +19,7 @@ class Project(models.Model):
         help_text='Max: 100000 chars. Use HTML to make it look good.'
     )
 
-    tag = models.ManyToManyField('Tag')
+    tag = models.ManyToManyField('Tag', blank=True)
 
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -42,13 +42,13 @@ class Project(models.Model):
     path_to_img = 'projects/static/img/projects/'
 
     sm_img = models.ImageField(upload_to=path_to_img, editable=True, help_text="572x360px", null=True,
-                               verbose_name="Small image (thumbnail for mobile devices)")
+                               verbose_name="Small image (thumbnail for mobile devices)", blank=True)
     md_img = models.ImageField(upload_to=path_to_img, editable=True, help_text="1149x370px", null=True,
-                               verbose_name="Medium image (thumbnail for screens)")
+                               verbose_name="Medium image (thumbnail for screens)", blank=True)
     lg_img = models.ImageField(upload_to=path_to_img, editable=True, help_text="1680x1050px", null=True,
-                               verbose_name="Large image (background for the project detail page)")
+                               verbose_name="Large image (background for the project detail page)", blank=True)
 
-    img = models.ManyToManyField('Image')
+    img = models.ManyToManyField('Image', blank=True)
 
     STATUS = (
         ('t', 'Test'),
@@ -116,7 +116,7 @@ class Image(models.Model):
     path_to_img = 'projects/static/img/projects/'
 
     image = models.ImageField(upload_to=path_to_img, editable=True, help_text='Path: ' + path_to_img, null=True)
-    description = models.CharField(max_length=1000, verbose_name='Image description')
+    description = models.CharField(max_length=1000, verbose_name='Image description', blank=True)
 
     def __str__(self):
         return  self.image.name
