@@ -53,7 +53,7 @@ class Project(models.Model):
     STATUS = (
         ('t', 'Test'),
         ('e', 'Edit'),
-        ('p', 'public'),
+        ('p', 'Public'),
     )
 
     status = models.CharField(
@@ -65,14 +65,15 @@ class Project(models.Model):
     )
 
     # Side note for editing each of the images (GIMP).
-    #   Apply desaturation;
+    #   Apply desaturation (from 0.0 to 0.3 of saturation should do);
     #   Apply CIE ich Noise filter (dulling set from 4 to 6 depending on the image)
     #   Create black layer (visibility: 75% - depending on the image)
-    #   ** md_img, apply gradient from the top (~10% above) to the bottom (~10% below)
-    #   ** lg_img, must be a little bit darker than the others
-    #   Further adjust brightness and contrast
+    #   3D effect
+    #   ** md_img, apply gradient from the top (~10% above) to the bottom (~10% below); must be a little bit darker
+    #              than the others
     #   ** lg_img, 3D centered effect - duplicate the layer, remove red/green&blue from layers, scale the red one up
     #      and merge them down
+    #   Further adjust brightness and contrast
     # Naming convention should follow: {size}_project_name.jpg, where {size} = sm, md, lg.
 
     def __str__(self):
