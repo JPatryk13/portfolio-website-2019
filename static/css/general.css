@@ -41,6 +41,10 @@ h1, h2 {
 	cursor: pointer !important;
 }
 
+.text-darker {
+    color: var(--dark-grey) !important;
+}
+
 @media screen and (max-width: 768px) {
 	/* Properties for footer - no visibility */
 	footer {
