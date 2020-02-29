@@ -57,7 +57,7 @@
 <!-- Container for screens -->
 
 <!-- Container for mobile devices -->
-<div class="container container-vert-center d-flex justify-content-center cont-mobile my-5 py-5">
+<div class="container container-vert-center d-flex justify-content-center cont-mobile">
   <div class="row w-100">
     <div class="col-12 p-4 border border-white rounded">
       <div style="text-align:center">
@@ -96,23 +96,6 @@
   </div>
 </div>
 <!-- Container for mobile devices -->
-
-<!-- Script for adding .pt-5, .mt-5 and .scroll-on classes -->
-<script type="text/javascript">
-	var row = document.getElementsByClassName("row w-100");
-	var container = document.getElementsByClassName("container container-vert-center");
-	var body = document.getElementsByTagName("body");
-    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-    if (vw < 768) {
-        row[0].classList.add("py-5");
-		row[0].classList.add("my-5");
-		container[0].classList.add("py-5");
-		container[0].classList.add("my-5");
-	    body[0].classList.add("scroll-on");
-    }
-</script>
-<!-- Script for adding .pt-5, .mt-5 and .scroll-on classes -->
 
 {% endblock %}
 
