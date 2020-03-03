@@ -18,11 +18,11 @@
 }
 
 .cont-screen {
-	display: flex;
+	display: flex !important;
 }
 
 .cont-mobile {
-	display: none;
+	display: none !important;
 }
 
 @media screen and (max-width: 768px) {
