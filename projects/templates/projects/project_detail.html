@@ -26,16 +26,18 @@
 <div class="container container-vert-center">
   <div class="row w-100 pt-5 mt-5">
     <div class="col-12 my-3" style="text-align: justify;">
-      <h1 class="text-center">{{ project.title }}</h1>
-      <br>
-      {% if project.phase == 'p' %}<p>Phase: Planning</p>
-      {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
-      {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
-      {% else %}<p>Phase: Completion</p>
+      {% if project.status == 'p' %}
+        <h1 class="text-center">{{ project.title }}</h1>
+        <br>
+        {% if project.phase == 'p' %}<p>Phase: Planning</p>
+        {% elif project.phase == 'i' %}<p>Phase: Implementation</p>
+        {% elif project.phase == 'm' %}<p>Phase: Maintenance</p>
+        {% else %}<p>Phase: Completion</p>
+        {% endif %}
+        <p>Added at: {{ project.added_at }}</p>
+        <br>
+        <p>{{ project.description|safe }}</p>
       {% endif %}
-      <p>Added at: {{ project.added_at }}</p>
-      <br>
-      <p>{{ project.description|safe }}</p>
     </div>
   </div>
 </div>
