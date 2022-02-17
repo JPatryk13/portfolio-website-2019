@@ -1,11 +1,5 @@
 # portfolio
-Online portfolio website created in Django.
-
-Requirements:
-python 3.6,
-django 2.1.5,
-pillow 7.0.0,
-dnspython 1.16.0
+My first full-stack project. Back-end created in Django 2.1.5 - development working on Linx Fedora (Python 3.7) and Windows 10 (Python 3.10). Requires either the .env file or (for displaying purpose only) manually inserting SECRET_KEY, DEBUG and ALLOWED_HOSTS variables' values into settings file - then, the python-decouple can be omitted.
 
 Settings and .env file added to gitignore. Must be created manually whenever "git clone" is used the first time.
 
